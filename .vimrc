@@ -1,33 +1,32 @@
 " VIM customization
 
+" General stuff
 set t_Co=256
 filetype plugin indent on
-syntax on
-set number
+syntax on "Turns on syntax
+set number "Sets line numbers
+
+" Tab to 2 spaces
 set numberwidth=2
+set tabstop=2 
+set shiftwidth=2
 set expandtab
 retab
-set tabstop=2
-set shiftwidth=2
-set showmatch
+
+" Misc
+set cursorline "Highlights the line you're on
+set wildmenu
+set hlsearch "Highlights the things you search
+set showmatch "Shows when {}, [], or () are matching
+
+" Color scheme
 let g:rehash256=1
 let g:molokai_original=1
 colorscheme molokai
 
-" Making you good at VIM...
+"Enable Pathogen
+execute pathogen#infect()
 
-" No more arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-
-" No more holding down h, j, k, & l
-noremap jj <nop>
-noremap hh <nop>
-noremap kk <nop>
-noremap ll <nop>
+" Enable VIM: hardmode
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
